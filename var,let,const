@@ -1,0 +1,52 @@
+# var、let、const的区别
+1 作用域不同
+var有function作用域，let和const只有块作用域
+function showVal(){
+    console.log(a);//undefined
+    var a=1;
+    console.log(a);//1    
+  }
+showMsg();
+---解释： 对于var对象， 未定义前使用时， js会创建一个a并赋予默认值undefined， 不会影响整个函数运行
+function showVal(){
+    console.log(a);//Cannot access 'a' before initialization
+    let a=1;
+    console.log(a);
+  }
+showMsg();  
+---解释： 对于let对象， 未定义前使用时， js会报错， 函数会终止
+function showMsg(){
+    console.log(a);
+    const a=1;
+    console.log(a);
+}
+showMsg();
+---解释： 与let对象一样， 对const对象， 未定义前使用时， js会报错， 函数会终止
+
+2 const与let对象的区别： const对象不能修改
+  function showMsg(){
+    const a=1;
+    a=2;  //Assignment to constant variable
+    console.log(a);
+}
+showMsg();
+
+3 const对象的不可变与可变
+function showMsg(){
+    const a={};
+    a={name:'anna',age:10};  // Assignment to constant variable.
+    console.log(a);
+}
+showMsg();
+--解释：直接给const对象赋值对导致js报错
+function showMsg(){
+    const a={};
+    a.name='anna';
+    a.age=10;  
+    console.log(a);
+}
+showMsg();
+//{name: 'anna', age: 10}
+--解释：可以修改const对象的属性值
+    
+    
